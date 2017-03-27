@@ -105,7 +105,7 @@ class supPanel(LabelFrame):
 
             db=shelve.open("staffDB",writeback=True)
 
-            takenDays=len(list(set(db[operator].requestDays+db[operatorName].approvedDays)))
+            takenDays=len(list(set(db[operatorName].requestDays+db[operatorName].approvedDays)))
             txtVar["Taken"].set(takenDays)
 
             approvedDays=db[operatorName].requestDays
@@ -202,7 +202,7 @@ class supPanel(LabelFrame):
             approvedList.config(state="disabled")
 
         for staff in db.keys():
-            staffList.append(db[staff].lastName+" "+db[staff].firstName)
+            staffList.append(db[staff].lastName+", "+db[staff].firstName)
 
         db.close()
 
